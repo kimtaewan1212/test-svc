@@ -2,6 +2,7 @@ import loki from "lokijs";
 
 let todolist;
 let id = new Date().getTime();
+let idCounter = 0;
 
 // let databaseInitialize= () => {
 //     todolist = db.getCollection("todolist");
@@ -103,13 +104,13 @@ export const addTodo = ({ owner, todo, desc }) => {
     if (!todo || todo.trim() === "") {
       throw new Error("할일을 입력하셔야 합니다.");
     }
-    
-    const item = { 
-      owner, 
-      id: new Date().getTime(), 
-      todo: todo.trim(), 
-      desc: desc || "", 
-      done: false 
+
+    const item = {
+      owner,
+      id: new Date().getTime() + (++idCounter),
+      todo: todo.trim(),
+      desc: desc || "",
+      done: false
     };
     
     todolist.insert(item);
