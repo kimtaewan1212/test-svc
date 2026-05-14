@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS categories (
+  id         SERIAL PRIMARY KEY,
+  user_id    INTEGER     NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  name       VARCHAR(100) NOT NULL,
+  color      CHAR(7)     NOT NULL DEFAULT '#6B7280',
+  is_default BOOLEAN     NOT NULL DEFAULT FALSE,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
