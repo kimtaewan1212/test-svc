@@ -1,11 +1,14 @@
 import { useState, type FormEvent } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { useLogin } from '../hooks/useAuth'
 import { getErrorMessage } from '../constants/errorMessages'
 import type { ApiError } from '../types/common'
+import LanguageSelector from '../components/common/LanguageSelector'
 
 export default function LoginPage() {
   const navigate = useNavigate()
+  const { t } = useTranslation()
   const { mutate: login, isPending } = useLogin()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -29,10 +32,13 @@ export default function LoginPage() {
   return (
     <div style={styles.container}>
       <div style={styles.card}>
-        <h1 style={styles.title}>TodoListApp</h1>
+        <div style={styles.topBar}>
+          <h1 style={styles.title}>TodoListApp</h1>
+          <LanguageSelector />
+        </div>
         <form onSubmit={handleSubmit} style={styles.form}>
           <label style={styles.label}>
-            이메일
+            {t('auth.email')}
             <input
               type="email"
               value={email}
@@ -42,7 +48,7 @@ export default function LoginPage() {
             />
           </label>
           <label style={styles.label}>
-            비밀번호
+            {t('auth.password')}
             <input
               type="password"
               value={password}
@@ -53,11 +59,11 @@ export default function LoginPage() {
           </label>
           {errorMsg && <p style={styles.error}>{errorMsg}</p>}
           <button type="submit" disabled={isPending} style={styles.button}>
-            {isPending ? '로그인 중...' : '로그인'}
+            {isPending ? t('auth.logging_in') : t('auth.login')}
           </button>
         </form>
         <p style={styles.link}>
-          계정이 없으신가요? <Link to="/register">회원가입</Link>
+          {t('auth.no_account')} <Link to="/register">{t('auth.register')}</Link>
         </p>
       </div>
     </div>
@@ -79,12 +85,16 @@ const styles: Record<string, React.CSSProperties> = {
     padding: 32,
     width: 360,
   },
+  topBar: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 24,
+  },
   title: {
     fontSize: 20,
     fontWeight: 700,
     color: 'var(--accent)',
-    marginBottom: 24,
-    textAlign: 'center',
   },
   form: { display: 'flex', flexDirection: 'column', gap: 16 },
   label: { display: 'flex', flexDirection: 'column', gap: 4, fontSize: 14, color: 'var(--text-primary)' },

@@ -14,6 +14,7 @@
 | 1.0 | 2026-05-13 | 개발팀 | 최초 작성 |
 | 1.1 | 2026-05-14 | 개발팀 | 실제 구현 기준으로 문서 보정 — Express 5.x, 3.4절 API 응답 camelCase 직접 반환, categoryService 트랜잭션 예외 명시 (2.2절) |
 | 1.2 | 2026-05-14 | 개발팀 | 다크 모드 추가 — `themeStore.ts` 스토어, CSS 변수 기반 색상 시스템 도입 (6절 stores 디렉토리 갱신) |
+| 1.3 | 2026-05-14 | 개발팀 | 다국어(i18n) 추가 — `src/i18n/` 디렉토리, `LanguageSelector` 컴포넌트, 5개 언어 locale 파일 (6절 갱신) |
 
 ---
 
@@ -392,7 +393,7 @@ frontend/
 ├── src/
 │   ├── assets/              # 정적 파일 (이미지, 폰트, 아이콘 SVG)
 │   ├── components/          # 재사용 UI 컴포넌트 (도메인별 하위 디렉토리)
-│   │   ├── common/          # 범용 UI (Button, Input, Modal, Pagination 등)
+│   │   ├── common/          # 범용 UI (Button, Input, Modal, Pagination, LanguageSelector 등)
 │   │   ├── todo/            # 할일 도메인 컴포넌트 (TodoCard, TodoForm 등)
 │   │   └── category/        # 카테고리 도메인 컴포넌트
 │   ├── pages/               # 라우트 단위 페이지 컴포넌트
@@ -407,6 +408,14 @@ frontend/
 │   │   ├── useCategories.ts     # 카테고리 CRUD
 │   │   ├── useAuth.ts           # 로그인, 로그아웃, 회원가입 mutation
 │   │   └── useUser.ts           # 내 정보 조회/수정, 회원탈퇴
+│   ├── i18n/                # 다국어(i18n) 설정 및 locale 파일
+│   │   ├── index.ts             # i18next 초기화 (5개 언어 리소스 등록, localStorage 언어 복원)
+│   │   └── locales/
+│   │       ├── ko.ts            # 한국어
+│   │       ├── en.ts            # English
+│   │       ├── es.ts            # Español
+│   │       ├── ja.ts            # 日本語
+│   │       └── zh.ts            # 中文
 │   ├── stores/              # Zustand 전역 클라이언트 상태
 │   │   ├── authStore.ts         # 인증 상태 (토큰, 사용자 정보, isAuthenticated) — 메모리 한정
 │   │   └── themeStore.ts        # 테마 상태 (isDark, toggle) — localStorage 영속

@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { useMe, useUpdateMe, useDeleteMe } from '../hooks/useUser'
 import { useAuthStore } from '../stores/authStore'
 import { isValidPassword } from '../utils/validationUtils'
@@ -9,6 +10,7 @@ import type { ApiError } from '../types/common'
 
 export default function SettingsPage() {
   const navigate = useNavigate()
+  const { t } = useTranslation()
   const { data: me } = useMe()
   const { mutate: updateMe, isPending: isUpdating } = useUpdateMe()
   const { mutate: deleteMe, isPending: isDeleting } = useDeleteMe()
@@ -27,7 +29,7 @@ export default function SettingsPage() {
     e.preventDefault()
     setNameError('')
     setNameSuccess(false)
-    if (!name.trim()) { setNameError('이름을 입력해주세요.'); return }
+    if (!name.trim()) { setNameError(t('settings.name_required')); return }
     updateMe(
       { name: name.trim() },
       {
@@ -44,9 +46,9 @@ export default function SettingsPage() {
     e.preventDefault()
     setPwError('')
     setPwSuccess(false)
-    if (!currentPassword) { setPwError('현재 비밀번호를 입력해주세요.'); return }
+    if (!currentPassword) { setPwError(t('settings.current_password_required')); return }
     if (!isValidPassword(newPassword)) {
-      setPwError('새 비밀번호는 8자 이상, 영문과 숫자를 포함해야 합니다.')
+      setPwError(t('settings.new_password_invalid'))
       return
     }
     updateMe(
@@ -62,7 +64,7 @@ export default function SettingsPage() {
   }
 
   function handleDeleteAccount() {
-    if (!window.confirm('정말 탈퇴하시겠습니까?\n모든 데이터가 즉시 삭제됩니다.')) return
+    if (!window.confirm(t('settings.delete_confirm'))) return
     deleteMe(undefined, {
       onSuccess: () => { clearAuth(); navigate(ROUTES.LOGIN) },
     })
@@ -70,10 +72,10 @@ export default function SettingsPage() {
 
   return (
     <div style={styles.page}>
-      <h2 style={styles.pageHeading}>설정</h2>
+      <h2 style={styles.pageHeading}>{t('settings.title')}</h2>
 
       <section style={styles.section}>
-        <h3 style={styles.sectionHeading}>이름 수정</h3>
+        <h3 style={styles.sectionHeading}>{t('settings.edit_name')}</h3>
         <form onSubmit={handleNameSubmit} style={styles.form}>
           <input
             value={name}
@@ -82,43 +84,43 @@ export default function SettingsPage() {
             style={styles.input}
           />
           {nameError && <p style={styles.error}>{nameError}</p>}
-          {nameSuccess && <p style={styles.success}>이름이 변경되었습니다.</p>}
-          <button type="submit" disabled={isUpdating} style={styles.btnPrimary}>저장</button>
+          {nameSuccess && <p style={styles.success}>{t('settings.name_changed')}</p>}
+          <button type="submit" disabled={isUpdating} style={styles.btnPrimary}>{t('common.save')}</button>
         </form>
       </section>
 
       <section style={styles.section}>
-        <h3 style={styles.sectionHeading}>비밀번호 변경</h3>
+        <h3 style={styles.sectionHeading}>{t('settings.change_password')}</h3>
         <form onSubmit={handlePasswordSubmit} style={styles.form}>
           <input
             type="password"
             value={currentPassword}
             onChange={(e) => setCurrentPassword(e.target.value)}
-            placeholder="현재 비밀번호"
+            placeholder={t('settings.current_password')}
             style={styles.input}
           />
           <input
             type="password"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
-            placeholder="새 비밀번호 (8자 이상, 영문+숫자)"
+            placeholder={t('settings.new_password')}
             style={styles.input}
           />
           {pwError && <p style={styles.error}>{pwError}</p>}
-          {pwSuccess && <p style={styles.success}>비밀번호가 변경되었습니다.</p>}
-          <button type="submit" disabled={isUpdating} style={styles.btnPrimary}>변경</button>
+          {pwSuccess && <p style={styles.success}>{t('settings.password_changed')}</p>}
+          <button type="submit" disabled={isUpdating} style={styles.btnPrimary}>{t('common.save')}</button>
         </form>
       </section>
 
       <section style={{ ...styles.section, borderColor: 'var(--danger)' }}>
-        <h3 style={{ ...styles.sectionHeading, color: 'var(--danger)' }}>회원탈퇴</h3>
-        <p style={styles.warningText}>탈퇴 시 모든 할일과 카테고리 데이터가 즉시 삭제되며 복구할 수 없습니다.</p>
+        <h3 style={{ ...styles.sectionHeading, color: 'var(--danger)' }}>{t('settings.delete_account')}</h3>
+        <p style={styles.warningText}>{t('settings.delete_warning')}</p>
         <button
           onClick={handleDeleteAccount}
           disabled={isDeleting}
           style={styles.btnDanger}
         >
-          {isDeleting ? '처리 중...' : '회원탈퇴'}
+          {isDeleting ? t('common.processing') : t('settings.delete_account')}
         </button>
       </section>
     </div>

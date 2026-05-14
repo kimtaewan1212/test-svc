@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import {
   useCategories,
   useCreateCategory,
@@ -12,6 +13,7 @@ const MAX_CATEGORIES = 20
 const DEFAULT_COLOR = '#6B7280'
 
 export default function CategoryPage() {
+  const { t } = useTranslation()
   const { data: categories = [], isLoading } = useCategories()
   const { mutate: create, isPending: isCreating } = useCreateCategory()
   const { mutate: update } = useUpdateCategory()
@@ -48,21 +50,21 @@ export default function CategoryPage() {
   }
 
   function handleDelete(cat: Category) {
-    if (!window.confirm(`"${cat.name}" 카테고리를 삭제하시겠습니까?\n소속 할일은 '일반' 카테고리로 이동됩니다.`)) return
+    if (!window.confirm(t('category.delete_confirm', { name: cat.name }))) return
     remove(cat.id)
   }
 
-  if (isLoading) return <div style={styles.page}>불러오는 중...</div>
+  if (isLoading) return <div style={styles.page}>{t('common.loading')}</div>
 
   return (
     <div style={styles.page}>
-      <h2 style={styles.heading}>카테고리 관리</h2>
+      <h2 style={styles.heading}>{t('category.manage')}</h2>
 
       <div style={styles.addRow}>
         <input
           value={newName}
           onChange={(e) => setNewName(e.target.value)}
-          placeholder="카테고리 이름"
+          placeholder={t('category.name_placeholder')}
           disabled={isAtMax}
           style={styles.input}
         />
@@ -72,14 +74,14 @@ export default function CategoryPage() {
           onChange={(e) => setNewColor(e.target.value)}
           disabled={isAtMax}
           style={styles.colorPicker}
-          title="색상 선택"
+          title={t('category.name_placeholder')}
         />
         <button
           onClick={handleCreate}
           disabled={isAtMax || isCreating || !newName.trim()}
           style={styles.btnPrimary}
         >
-          {isAtMax ? `최대 ${MAX_CATEGORIES}개` : '추가'}
+          {isAtMax ? t('category.max', { count: MAX_CATEGORIES }) : t('common.add')}
         </button>
       </div>
 
@@ -99,21 +101,21 @@ export default function CategoryPage() {
                   onChange={(e) => setEditColor(e.target.value)}
                   style={styles.colorPicker}
                 />
-                <button onClick={() => handleUpdate(cat.id)} style={styles.btnPrimary}>저장</button>
-                <button onClick={() => setEditingId(null)} style={styles.btnSecondary}>취소</button>
+                <button onClick={() => handleUpdate(cat.id)} style={styles.btnPrimary}>{t('common.save')}</button>
+                <button onClick={() => setEditingId(null)} style={styles.btnSecondary}>{t('common.cancel')}</button>
               </div>
             ) : (
               <div style={styles.itemRow}>
                 <CategoryBadge color={cat.color} name={cat.name} />
-                {cat.isDefault && <span style={styles.defaultBadge}>기본</span>}
+                {cat.isDefault && <span style={styles.defaultBadge}>{t('category.default')}</span>}
                 <div style={styles.actions}>
-                  <button onClick={() => startEdit(cat)} style={styles.btnSecondary}>수정</button>
+                  <button onClick={() => startEdit(cat)} style={styles.btnSecondary}>{t('common.edit')}</button>
                   <button
                     onClick={() => handleDelete(cat)}
                     disabled={cat.isDefault}
                     style={{ ...styles.btnDanger, opacity: cat.isDefault ? 0.4 : 1 }}
                   >
-                    삭제
+                    {t('common.delete')}
                   </button>
                 </div>
               </div>

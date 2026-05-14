@@ -1,17 +1,20 @@
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { useLogout } from '../../hooks/useAuth'
 import { useAuthStore } from '../../stores/authStore'
 import { useThemeStore } from '../../stores/themeStore'
 import { ROUTES } from '../../constants/routes'
+import LanguageSelector from './LanguageSelector'
 
 const NAV_ITEMS = [
-  { to: ROUTES.TODOS, label: '할일' },
-  { to: ROUTES.CATEGORIES, label: '카테고리' },
-  { to: ROUTES.SETTINGS, label: '설정' },
+  { to: ROUTES.TODOS, labelKey: 'todo.list' },
+  { to: ROUTES.CATEGORIES, labelKey: 'category.manage' },
+  { to: ROUTES.SETTINGS, labelKey: 'settings.title' },
 ]
 
 export default function AppLayout() {
   const navigate = useNavigate()
+  const { t } = useTranslation()
   const user = useAuthStore((s) => s.user)
   const { mutate: logout } = useLogout()
   const { isDark, toggle } = useThemeStore()
@@ -25,9 +28,10 @@ export default function AppLayout() {
       <header style={styles.header}>
         <span style={styles.logo}>TodoListApp</span>
         <div style={styles.headerRight}>
-          <button onClick={toggle} style={styles.btnTheme}>{isDark ? '라이트' : '다크'}</button>
+          <LanguageSelector />
+          <button onClick={toggle} style={styles.btnTheme}>{isDark ? t('common.light') : t('common.dark')}</button>
           <span style={styles.userName}>{user?.name}</span>
-          <button onClick={handleLogout} style={styles.btnLogout}>로그아웃</button>
+          <button onClick={handleLogout} style={styles.btnLogout}>{t('common.logout')}</button>
         </div>
       </header>
 
@@ -42,7 +46,7 @@ export default function AppLayout() {
                 ...(isActive ? styles.navItemActive : {}),
               })}
             >
-              {item.label}
+              {t(item.labelKey)}
             </NavLink>
           ))}
         </nav>
@@ -62,7 +66,7 @@ export default function AppLayout() {
               ...(isActive ? styles.tabItemActive : {}),
             })}
           >
-            {item.label}
+            {t(item.labelKey)}
           </NavLink>
         ))}
       </nav>
@@ -86,7 +90,7 @@ const styles: Record<string, React.CSSProperties> = {
     flexShrink: 0,
   },
   logo: { fontSize: 16, fontWeight: 700, color: 'var(--accent)' },
-  headerRight: { display: 'flex', alignItems: 'center', gap: 12 },
+  headerRight: { display: 'flex', alignItems: 'center', gap: 8 },
   btnTheme: {
     fontSize: 12,
     color: 'var(--text-secondary)',
@@ -96,7 +100,7 @@ const styles: Record<string, React.CSSProperties> = {
     padding: '3px 8px',
     cursor: 'pointer',
   },
-  userName: { fontSize: 13, color: 'var(--text-secondary)' },
+  userName: { fontSize: 13, color: 'var(--text-secondary)', marginLeft: 4 },
   btnLogout: {
     fontSize: 13,
     color: 'var(--text-secondary)',

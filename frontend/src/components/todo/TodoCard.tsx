@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import CategoryBadge from '../category/CategoryBadge'
 import type { TodoItem } from '../../types/todo'
 import type { Category } from '../../types/category'
@@ -9,6 +10,7 @@ interface Props {
 }
 
 export default function TodoCard({ todo, categories, onToggle }: Props) {
+  const { t } = useTranslation()
   const category = categories.find((c) => c.id === todo.categoryId)
 
   return (
@@ -26,7 +28,7 @@ export default function TodoCard({ todo, categories, onToggle }: Props) {
         <div style={styles.meta}>
           {category && <CategoryBadge color={category.color} name={category.name} />}
           <span style={styles.dueDate}>
-            {todo.dueDate ? `~ ${todo.dueDate}` : '기한 없음'}
+            {todo.dueDate ? `~ ${todo.dueDate}` : t('todo.no_due_date')}
           </span>
         </div>
       </div>

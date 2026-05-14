@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { useTodos, useToggleTodo } from '../hooks/useTodos'
 import { useCategories } from '../hooks/useCategories'
 import TodoCard from '../components/todo/TodoCard'
@@ -10,6 +11,7 @@ import { ROUTES } from '../constants/routes'
 const PAGE_LIMIT = 20
 
 export default function TodoListPage() {
+  const { t } = useTranslation()
   const [filters, setFilters] = useState<TodoFilter>({ page: 1, limit: PAGE_LIMIT })
   const { data, isLoading, isError } = useTodos(filters)
   const { data: categories = [] } = useCategories()
@@ -25,19 +27,19 @@ export default function TodoListPage() {
   return (
     <div style={styles.page}>
       <div style={styles.header}>
-        <h2 style={styles.heading}>할일 목록</h2>
-        <Link to={ROUTES.TODO_NEW} style={styles.btnNew}>+ 새 할일</Link>
+        <h2 style={styles.heading}>{t('todo.list')}</h2>
+        <Link to={ROUTES.TODO_NEW} style={styles.btnNew}>{t('todo.new')}</Link>
       </div>
 
       <FilterBar filters={filters} categories={categories} onChange={setFilters} />
 
-      {isLoading && <p style={styles.status}>불러오는 중...</p>}
-      {isError && <p style={{ ...styles.status, color: 'var(--danger)' }}>오류가 발생했습니다.</p>}
+      {isLoading && <p style={styles.status}>{t('common.loading')}</p>}
+      {isError && <p style={{ ...styles.status, color: 'var(--danger)' }}>{t('common.error')}</p>}
 
       {!isLoading && !isError && (
         <>
           {todos.length === 0 ? (
-            <p style={styles.status}>할일이 없습니다.</p>
+            <p style={styles.status}>{t('common.empty')}</p>
           ) : (
             <ul style={styles.list}>
               {todos.map((todo) => (

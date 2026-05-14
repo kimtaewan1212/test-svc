@@ -1,5 +1,6 @@
 import { useState, useEffect, type FormEvent } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { useCreateTodo, useUpdateTodo } from '../hooks/useTodos'
 import { useCategories } from '../hooks/useCategories'
 import { getTodoById } from '../api/todoApi'
@@ -12,6 +13,7 @@ export default function TodoFormPage() {
   const { id } = useParams<{ id: string }>()
   const isEdit = Boolean(id)
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const { data: categories = [] } = useCategories()
   const { mutate: create, isPending: isCreating } = useCreateTodo()
@@ -34,16 +36,16 @@ export default function TodoFormPage() {
         setCategoryId(todo.categoryId)
         setDueDate(todo.dueDate)
       })
-      .catch(() => setError('할일 정보를 불러오지 못했습니다.'))
+      .catch(() => setError(t('todo.load_error')))
       .finally(() => setIsLoadingTodo(false))
-  }, [id, isEdit])
+  }, [id, isEdit, t])
 
   function validate(): boolean {
-    if (!title.trim()) { setError('제목을 입력해주세요.'); return false }
-    if (title.length > TITLE_MAX) { setError(`제목은 ${TITLE_MAX}자 이내로 입력해주세요.`); return false }
-    if (description.length > DESC_MAX) { setError(`설명은 ${DESC_MAX}자 이내로 입력해주세요.`); return false }
-    if (!categoryId) { setError('카테고리를 선택해주세요.'); return false }
-    if (!dueDate) { setError('종료 예정일을 입력해주세요.'); return false }
+    if (!title.trim()) { setError(t('todo.title_required')); return false }
+    if (title.length > TITLE_MAX) { setError(t('todo.title_max', { max: TITLE_MAX })); return false }
+    if (description.length > DESC_MAX) { setError(t('todo.desc_max', { max: DESC_MAX })); return false }
+    if (!categoryId) { setError(t('todo.category_required')); return false }
+    if (!dueDate) { setError(t('todo.due_date_required')); return false }
     return true
   }
 
@@ -69,14 +71,14 @@ export default function TodoFormPage() {
     }
   }
 
-  if (isLoadingTodo) return <div style={styles.page}>불러오는 중...</div>
+  if (isLoadingTodo) return <div style={styles.page}>{t('common.loading')}</div>
 
   return (
     <div style={styles.page}>
-      <h2 style={styles.heading}>{isEdit ? '할일 수정' : '새 할일'}</h2>
+      <h2 style={styles.heading}>{isEdit ? t('todo.edit_title') : t('todo.new_title')}</h2>
       <form onSubmit={handleSubmit} style={styles.form}>
         <label style={styles.label}>
-          제목 <span style={styles.required}>*</span>
+          {t('todo.title')} <span style={styles.required}>*</span>
           <input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -88,7 +90,7 @@ export default function TodoFormPage() {
         </label>
 
         <label style={styles.label}>
-          설명
+          {t('todo.description')}
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -100,14 +102,14 @@ export default function TodoFormPage() {
         </label>
 
         <label style={styles.label}>
-          카테고리 <span style={styles.required}>*</span>
+          {t('todo.category')} <span style={styles.required}>*</span>
           <select
             value={categoryId}
             onChange={(e) => setCategoryId(e.target.value ? Number(e.target.value) : '')}
             required
             style={styles.select}
           >
-            <option value="">카테고리 선택</option>
+            <option value="">{t('todo.select_category')}</option>
             {categories.map((c) => (
               <option key={c.id} value={c.id}>{c.name}</option>
             ))}
@@ -115,7 +117,7 @@ export default function TodoFormPage() {
         </label>
 
         <label style={styles.label}>
-          종료 예정일 <span style={styles.required}>*</span>
+          {t('todo.due_date')} <span style={styles.required}>*</span>
           <input
             type="date"
             value={dueDate}
@@ -129,10 +131,10 @@ export default function TodoFormPage() {
 
         <div style={styles.actions}>
           <button type="button" onClick={() => navigate(-1)} style={styles.btnSecondary}>
-            취소
+            {t('common.cancel')}
           </button>
           <button type="submit" disabled={isPending} style={styles.btnPrimary}>
-            {isPending ? '저장 중...' : isEdit ? '수정' : '등록'}
+            {isPending ? t('common.saving') : isEdit ? t('common.edit') : t('todo.register')}
           </button>
         </div>
       </form>

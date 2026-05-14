@@ -1,12 +1,15 @@
 import { useState, type FormEvent } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { useRegister } from '../hooks/useAuth'
 import { isValidEmail, isValidPassword } from '../utils/validationUtils'
 import { getErrorMessage } from '../constants/errorMessages'
 import type { ApiError } from '../types/common'
+import LanguageSelector from '../components/common/LanguageSelector'
 
 export default function RegisterPage() {
   const navigate = useNavigate()
+  const { t } = useTranslation()
   const { mutate: register, isPending } = useRegister()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -18,11 +21,11 @@ export default function RegisterPage() {
     setErrorMsg('')
 
     if (!isValidEmail(email)) {
-      setErrorMsg('올바른 이메일 형식이 아닙니다.')
+      setErrorMsg(t('auth.email_invalid'))
       return
     }
     if (!isValidPassword(password)) {
-      setErrorMsg('비밀번호는 8자 이상, 영문과 숫자를 포함해야 합니다.')
+      setErrorMsg(t('auth.password_invalid'))
       return
     }
 
@@ -41,10 +44,13 @@ export default function RegisterPage() {
   return (
     <div style={styles.container}>
       <div style={styles.card}>
-        <h1 style={styles.title}>회원가입</h1>
+        <div style={styles.topBar}>
+          <h1 style={styles.title}>{t('auth.register')}</h1>
+          <LanguageSelector />
+        </div>
         <form onSubmit={handleSubmit} style={styles.form}>
           <label style={styles.label}>
-            이름
+            {t('auth.name')}
             <input
               type="text"
               value={name}
@@ -54,7 +60,7 @@ export default function RegisterPage() {
             />
           </label>
           <label style={styles.label}>
-            이메일
+            {t('auth.email')}
             <input
               type="email"
               value={email}
@@ -64,7 +70,7 @@ export default function RegisterPage() {
             />
           </label>
           <label style={styles.label}>
-            비밀번호
+            {t('auth.password')}
             <input
               type="password"
               value={password}
@@ -72,15 +78,15 @@ export default function RegisterPage() {
               required
               style={styles.input}
             />
-            <span style={styles.hint}>8자 이상, 영문+숫자 조합</span>
+            <span style={styles.hint}>{t('auth.password_hint')}</span>
           </label>
           {errorMsg && <p style={styles.error}>{errorMsg}</p>}
           <button type="submit" disabled={isPending} style={styles.button}>
-            {isPending ? '가입 중...' : '회원가입'}
+            {isPending ? t('auth.registering') : t('auth.register')}
           </button>
         </form>
         <p style={styles.link}>
-          이미 계정이 있으신가요? <Link to="/login">로그인</Link>
+          {t('auth.has_account')} <Link to="/login">{t('auth.login')}</Link>
         </p>
       </div>
     </div>
@@ -102,12 +108,16 @@ const styles: Record<string, React.CSSProperties> = {
     padding: 32,
     width: 360,
   },
+  topBar: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 24,
+  },
   title: {
     fontSize: 20,
     fontWeight: 700,
     color: 'var(--accent)',
-    marginBottom: 24,
-    textAlign: 'center',
   },
   form: { display: 'flex', flexDirection: 'column', gap: 16 },
   label: { display: 'flex', flexDirection: 'column', gap: 4, fontSize: 14, color: 'var(--text-primary)' },

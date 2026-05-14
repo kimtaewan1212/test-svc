@@ -95,7 +95,78 @@ const styles = {
 
 ---
 
-## 3. 타이포그래피
+## 3. 다국어(i18n) 시스템
+
+### 3.1 지원 언어 및 드롭다운 순서
+
+드롭다운은 영어 명칭 알파벳 순으로 정렬한다.
+
+| 순서 | 언어 코드 | 드롭다운 표시 | 파일 |
+|------|-----------|--------------|------|
+| 1 | `zh` | 中文 | `src/i18n/locales/zh.ts` |
+| 2 | `en` | English | `src/i18n/locales/en.ts` |
+| 3 | `es` | Español | `src/i18n/locales/es.ts` |
+| 4 | `ja` | 日本語 | `src/i18n/locales/ja.ts` |
+| 5 | `ko` | 한국어 | `src/i18n/locales/ko.ts` |
+
+### 3.2 기술 스택
+
+- **라이브러리**: `i18next` + `react-i18next`
+- **초기화**: `src/i18n/index.ts`에서 앱 진입 전 동기 초기화 (`src/main.tsx`에서 첫 import)
+- **언어 복원**: `localStorage.getItem('language')` → 없으면 `'ko'` 기본값
+- **언어 변경**: `i18n.changeLanguage(code)` + `localStorage.setItem('language', code)`
+
+### 3.3 번역 키 구조
+
+단일 네임스페이스(`translation`) 아래 기능별 접두사로 구분한다.
+
+| 접두사 | 대상 |
+|--------|------|
+| `auth.*` | 로그인·회원가입 폼 |
+| `common.*` | 저장, 취소, 로딩 등 공통 문자열 |
+| `todo.*` | 할일 목록·폼 |
+| `category.*` | 카테고리 관리 |
+| `settings.*` | 설정 페이지 |
+| `filter.*` | 상태·기간 필터 탭 |
+| `error.*` | API 에러 코드 → 사용자 메시지 |
+
+### 3.4 컴포넌트에서 사용 방법
+
+```tsx
+import { useTranslation } from 'react-i18next'
+
+export default function MyComponent() {
+  const { t } = useTranslation()
+  return <button>{t('common.save')}</button>
+}
+```
+
+React 훅을 쓸 수 없는 비컴포넌트 함수(예: `getErrorMessage`)에서는 `i18next` 인스턴스를 직접 사용한다.
+
+```ts
+import i18next from 'i18next'
+
+export function getErrorMessage(code: string): string {
+  return i18next.t(`error.${code}`, { defaultValue: i18next.t('error.UNKNOWN') })
+}
+```
+
+### 3.5 언어 선택기 배치
+
+`LanguageSelector` 컴포넌트는 인증 여부와 관계없이 항상 접근 가능해야 하므로 두 곳에 배치한다.
+
+- **로그인·회원가입 페이지**: 카드 상단 우측
+- **앱 헤더(AppLayout)**: 다크모드 버튼 왼쪽
+
+### 3.6 새 언어 추가 절차
+
+1. `src/i18n/locales/<code>.ts` 파일 생성 (기존 `ko.ts` 기준 복사 후 번역)
+2. `src/i18n/index.ts`의 `resources`에 `<code>: { translation: <module> }` 항목 추가
+3. `src/components/common/LanguageSelector.tsx`의 `LANGUAGES` 배열에 알파벳 순 위치에 추가
+
+---
+
+## 4. 타이포그래피
 
 ### 폰트 패밀리
 ```css

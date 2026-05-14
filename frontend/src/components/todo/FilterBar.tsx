@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { STATUS_OPTIONS, PERIOD_OPTIONS } from '../../constants/filterOptions'
 import type { Category } from '../../types/category'
 import type { TodoFilter, TodoStatus, TodoPeriod } from '../../types/todo'
@@ -9,6 +10,8 @@ interface Props {
 }
 
 export default function FilterBar({ filters, categories, onChange }: Props) {
+  const { t } = useTranslation()
+
   return (
     <div style={styles.bar}>
       <select
@@ -18,7 +21,7 @@ export default function FilterBar({ filters, categories, onChange }: Props) {
         }
         style={styles.select}
       >
-        <option value="">전체 카테고리</option>
+        <option value="">{t('category.all')}</option>
         {categories.map((c) => (
           <option key={c.id} value={c.id}>{c.name}</option>
         ))}
@@ -34,7 +37,7 @@ export default function FilterBar({ filters, categories, onChange }: Props) {
               ...(filters.status === opt.value || (!filters.status && opt.value === 'all') ? styles.tabActive : {}),
             }}
           >
-            {opt.label}
+            {t(`filter.${opt.value}`)}
           </button>
         ))}
       </div>
@@ -49,7 +52,7 @@ export default function FilterBar({ filters, categories, onChange }: Props) {
               ...(filters.period === opt.value || (!filters.period && opt.value === 'all') ? styles.tabActive : {}),
             }}
           >
-            {opt.label}
+            {t(`filter.${opt.value}`)}
           </button>
         ))}
       </div>
