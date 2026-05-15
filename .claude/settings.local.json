@@ -57,7 +57,11 @@
       "Bash(curl *)",
       "Bash(npx -y @upstash/context7-mcp --version)",
       "mcp__supabase__list_tables",
-      "mcp__supabase__apply_migration"
+      "mcp__supabase__apply_migration",
+      "Bash(git push *)",
+      "Bash(git reset *)",
+      "Bash(npx vercel *)",
+      "Bash(npm run *)"
     ]
   },
   "enableAllProjectMcpServers": true,

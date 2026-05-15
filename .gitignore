@@ -2,6 +2,9 @@
 node_modules
 npm-debug.log
 log
+build
+coverage
+dist
 
 # Local development
 *.env
