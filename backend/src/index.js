@@ -5,7 +5,7 @@ const pool = require('./config/db');
 const express = require('express');
 const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('../../swagger/swagger.json');
+const swaggerDocument = require('../swagger.json');
 const mountRoutes = require('./routes/index');
 const errorHandler = require('./middlewares/errorHandler');
 
