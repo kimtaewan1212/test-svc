@@ -54,6 +54,10 @@ export async function request<T>(
   const res = await fetch(`${BASE_URL}${path}`, { ...options, headers })
 
   if (res.status === 401) {
+    if (path.startsWith('/auth/')) {
+      const body = (await res.json()) as { error: ApiError }
+      throw new ApiClientError(body.error)
+    }
     if (!isRefreshing) {
       isRefreshing = true
       refreshPromise = refreshAccessToken().finally(() => {

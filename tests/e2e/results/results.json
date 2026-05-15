@@ -1,0 +1,1114 @@
+{
+  "config": {
+    "configFile": "C:\\Users\\rebir\\_vibe\\test-svc\\tests\\e2e\\playwright.config.js",
+    "rootDir": "C:/Users/rebir/_vibe/test-svc/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/rebir/_vibe/test-svc/tests/e2e/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/rebir/_vibe/test-svc/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "results/results.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "results/html",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.60.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "sc-001-register.spec.js",
+      "file": "sc-001-register.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "SC-001: 신규 사용자 회원가입",
+          "file": "sc-001-register.spec.js",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "정상 회원가입 후 /todos로 리다이렉트된다",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 892,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-15T01:50:40.581Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2cb902c2f8b737ee2b64-4e92f647df8f10197479",
+              "file": "sc-001-register.spec.js",
+              "line": 6,
+              "column": 7
+            },
+            {
+              "title": "로그인 페이지에서 회원가입 링크로 이동 가능하다",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 605,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-15T01:50:41.819Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2cb902c2f8b737ee2b64-56dbf1aa5c8877cfe62c",
+              "file": "sc-001-register.spec.js",
+              "line": 19,
+              "column": 7
+            },
+            {
+              "title": "AF-001: 잘못된 이메일 형식 입력 시 에러 메시지가 표시된다",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 678,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-15T01:50:42.438Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2cb902c2f8b737ee2b64-45f24a40ed8defff075c",
+              "file": "sc-001-register.spec.js",
+              "line": 25,
+              "column": 7
+            },
+            {
+              "title": "AF-002: 중복 이메일 가입 시 에러 메시지가 표시된다",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1209,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-15T01:50:43.125Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2cb902c2f8b737ee2b64-8b5e5dcf6143fabcee6f",
+              "file": "sc-001-register.spec.js",
+              "line": 35,
+              "column": 7
+            },
+            {
+              "title": "AF-003: 약한 비밀번호 입력 시 에러 메시지가 표시된다",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 562,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-15T01:50:44.348Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2cb902c2f8b737ee2b64-fdf83f68007844859d60",
+              "file": "sc-001-register.spec.js",
+              "line": 54,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "sc-002-login.spec.js",
+      "file": "sc-002-login.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "SC-002: 로그인 및 할일 목록 확인",
+          "file": "sc-002-login.spec.js",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "정상 로그인 후 /todos로 리다이렉트되고 할일 목록이 표시된다",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1309,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-15T01:50:44.929Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "56259245e15d06e47133-d473807a0665ffa3e555",
+              "file": "sc-002-login.spec.js",
+              "line": 6,
+              "column": 7
+            },
+            {
+              "title": "AF-001: 틀린 비밀번호로 로그인 시 에러 메시지가 표시된다",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1414,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-15T01:50:46.252Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "56259245e15d06e47133-c4e8a03fabdca781855f",
+              "file": "sc-002-login.spec.js",
+              "line": 27,
+              "column": 7
+            },
+            {
+              "title": "비로그인 상태에서 /todos 접근 시 /login 으로 리다이렉트된다",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 453,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-15T01:50:47.678Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "56259245e15d06e47133-ee4e9388fc83c3b308c2",
+              "file": "sc-002-login.spec.js",
+              "line": 45,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "sc-003-create-todo.spec.js",
+      "file": "sc-003-create-todo.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "SC-003: 새 할일 등록",
+          "file": "sc-003-create-todo.spec.js",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "할일 등록 후 목록에 표시된다",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1139,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-15T01:50:48.143Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9cf5844b7a5b06a771aa-a1013416ce959a5ded57",
+              "file": "sc-003-create-todo.spec.js",
+              "line": 16,
+              "column": 7
+            },
+            {
+              "title": "AF-001: 제목 미입력 시 에러가 표시된다",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1307,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-15T01:50:49.295Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9cf5844b7a5b06a771aa-e2c253cae530295e72bc",
+              "file": "sc-003-create-todo.spec.js",
+              "line": 30,
+              "column": 7
+            },
+            {
+              "title": "AF-001: 카테고리 미선택 시 에러가 표시된다",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1093,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-15T01:50:50.614Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9cf5844b7a5b06a771aa-316f3605c6e2719d2741",
+              "file": "sc-003-create-todo.spec.js",
+              "line": 39,
+              "column": 7
+            },
+            {
+              "title": "AF-001: 종료 예정일 미입력 시 에러가 표시된다",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3467,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-15T01:50:51.717Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9cf5844b7a5b06a771aa-73ac48dd401b97b7c5bd",
+              "file": "sc-003-create-todo.spec.js",
+              "line": 48,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "sc-004-005-filter-toggle.spec.js",
+      "file": "sc-004-005-filter-toggle.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "SC-004/005: 할일 필터링 및 완료 토글",
+          "file": "sc-004-005-filter-toggle.spec.js",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "SC-004: 전체 필터에서 등록한 할일이 모두 보인다",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1224,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-15T01:50:55.200Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "756269bf723853b2afe5-d7ab58a308e0c40b4313",
+              "file": "sc-004-005-filter-toggle.spec.js",
+              "line": 29,
+              "column": 7
+            },
+            {
+              "title": "SC-005: 체크박스 클릭으로 완료 상태가 변경된다",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1134,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-15T01:50:56.434Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "756269bf723853b2afe5-d140cc38734358d2d4a4",
+              "file": "sc-004-005-filter-toggle.spec.js",
+              "line": 34,
+              "column": 7
+            },
+            {
+              "title": "SC-005: 완료 토글 후 미완료 필터에서 사라진다",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2169,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-15T01:50:57.580Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "756269bf723853b2afe5-2b1fab3c7877f76f99b1",
+              "file": "sc-004-005-filter-toggle.spec.js",
+              "line": 47,
+              "column": 7
+            },
+            {
+              "title": "SC-005: 완료 → 재클릭하면 미완료로 복원된다",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1341,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-15T01:50:59.763Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "756269bf723853b2afe5-eebac0225ab9f3121e6f",
+              "file": "sc-004-005-filter-toggle.spec.js",
+              "line": 62,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "sc-006-007-category.spec.js",
+      "file": "sc-006-007-category.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "SC-006: 카테고리 추가 및 할일 재분류",
+          "file": "sc-006-007-category.spec.js",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "새 카테고리 추가 후 목록에 표시된다",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1523,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-15T01:51:01.120Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ad1fdb635e654a39490e-1183e9b2f217f60e5fe8",
+              "file": "sc-006-007-category.spec.js",
+              "line": 16,
+              "column": 7
+            },
+            {
+              "title": "새 카테고리로 할일 등록이 가능하다",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1633,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-15T01:51:02.655Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ad1fdb635e654a39490e-3e243ff1a2f92b5aeb91",
+              "file": "sc-006-007-category.spec.js",
+              "line": 25,
+              "column": 7
+            },
+            {
+              "title": "카테고리 이름 수정이 가능하다",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2093,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-15T01:51:04.299Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ad1fdb635e654a39490e-dc9d7ac917d71347503a",
+              "file": "sc-006-007-category.spec.js",
+              "line": 42,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "SC-007: 카테고리 삭제",
+          "file": "sc-006-007-category.spec.js",
+          "line": 59,
+          "column": 6,
+          "specs": [
+            {
+              "title": "기본 카테고리(일반/업무/개인) 3개가 생성된다",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 870,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-15T01:51:06.402Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ad1fdb635e654a39490e-2f0b99029a06876f6156",
+              "file": "sc-006-007-category.spec.js",
+              "line": 70,
+              "column": 7
+            },
+            {
+              "title": "커스텀 카테고리 삭제 후 목록에서 사라진다",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1978,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-15T01:51:07.283Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ad1fdb635e654a39490e-dc590b614dfdc33c52f8",
+              "file": "sc-006-007-category.spec.js",
+              "line": 76,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "sc-008-009-settings.spec.js",
+      "file": "sc-008-009-settings.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "SC-008: 비밀번호 변경 및 이름 수정",
+          "file": "sc-008-009-settings.spec.js",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "비밀번호 변경 성공 후 성공 메시지가 표시된다",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1937,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-15T01:51:09.276Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "db2e3d5b85f9382750f5-69bc6259be62a02f2972",
+              "file": "sc-008-009-settings.spec.js",
+              "line": 19,
+              "column": 7
+            },
+            {
+              "title": "AF-001: 현재 비밀번호 오류 시 에러 메시지가 표시된다",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1975,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-15T01:51:11.229Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "db2e3d5b85f9382750f5-9da0120d1628dfd1ffe6",
+              "file": "sc-008-009-settings.spec.js",
+              "line": 28,
+              "column": 7
+            },
+            {
+              "title": "AF-003: 약한 새 비밀번호 입력 시 에러 메시지가 표시된다",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1257,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-15T01:51:13.215Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "db2e3d5b85f9382750f5-6dbcf413988b041de1f0",
+              "file": "sc-008-009-settings.spec.js",
+              "line": 37,
+              "column": 7
+            },
+            {
+              "title": "이름 변경 성공 후 성공 메시지가 표시된다",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1141,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-15T01:51:14.481Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "db2e3d5b85f9382750f5-76a8cde7fa6b652db7ab",
+              "file": "sc-008-009-settings.spec.js",
+              "line": 46,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "SC-009: 회원 탈퇴",
+          "file": "sc-008-009-settings.spec.js",
+          "line": 57,
+          "column": 6,
+          "specs": [
+            {
+              "title": "회원탈퇴 후 로그인 페이지로 이동한다",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1181,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-15T01:51:15.630Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "db2e3d5b85f9382750f5-c4f0729e58c28abccba1",
+              "file": "sc-008-009-settings.spec.js",
+              "line": 58,
+              "column": 7
+            },
+            {
+              "title": "AF-002: confirm 취소 시 탈퇴가 진행되지 않는다",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1516,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-15T01:51:16.818Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "db2e3d5b85f9382750f5-c293026b4be793af7c24",
+              "file": "sc-008-009-settings.spec.js",
+              "line": 78,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-05-15T01:50:40.111Z",
+    "duration": 38565.029,
+    "expected": 27,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

@@ -7,7 +7,16 @@
   "scripts": {
     "dev": "npx nodemon --exec babel-node src/index.js",
     "build": "babel src -d build",
-    "start": "npm run build && node build/index.js"
+    "start": "npm run build && node build/index.js",
+    "test": "jest"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    },
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    }
   },
   "author": "",
   "license": "ISC",
@@ -15,20 +24,25 @@
     "@babel/cli": "^7.25.9",
     "@babel/core": "^7.26.0",
     "@babel/node": "^7.26.0",
-    "@babel/preset-env": "^7.28.3",
-    "nodemon": "^3.1.7"
+    "@babel/preset-env": "^7.29.5",
+    "babel-jest": "^30.4.1",
+    "jest": "^30.4.2",
+    "nodemon": "^3.1.14",
+    "supertest": "^7.2.2"
   },
   "dependencies": {
     "chokidar": "^4.0.1",
     "cors": "^2.8.5",
     "ejs": "^3.1.10",
-    "express": "^4.21.2",
+    "express": "^4.22.2",
     "lokijs": "^1.5.12",
     "morgan": "^1.10.1",
     "multer": "^1.4.5-lts.2",
+    "openapi-mock-express-middleware": "^4.4.0",
     "rotating-file-stream": "^3.2.6",
     "shortid": "^2.2.17",
-    "sleep-promise": "^9.1.0"
+    "sleep-promise": "^9.1.0",
+    "swagger-ui-express": "^5.0.1"
   },
   "engines": {
     "node": ">=22.0.0"

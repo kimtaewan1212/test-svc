@@ -76,7 +76,7 @@ export default function TodoFormPage() {
   return (
     <div style={styles.page}>
       <h2 style={styles.heading}>{isEdit ? t('todo.edit_title') : t('todo.new_title')}</h2>
-      <form onSubmit={handleSubmit} style={styles.form}>
+      <form onSubmit={handleSubmit} style={styles.form} noValidate>
         <label style={styles.label}>
           {t('todo.title')} <span style={styles.required}>*</span>
           <input
