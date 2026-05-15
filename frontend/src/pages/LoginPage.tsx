@@ -33,7 +33,7 @@ export default function LoginPage() {
     <div style={styles.container}>
       <div style={styles.card}>
         <div style={styles.topBar}>
-          <h1 style={styles.title}>TodoListApp</h1>
+          <h1 style={styles.title}>할일목록</h1>
           <LanguageSelector />
         </div>
         <form onSubmit={handleSubmit} style={styles.form}>
